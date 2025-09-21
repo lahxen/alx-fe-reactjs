@@ -17,10 +17,11 @@ export const searchUsers = async (username, location = '', minRepos = '') => {
   let q = username || '';
   if (location) q += ` location:${location}`;
   if (minRepos) q += ` repos:>${minRepos}`;
-  const response = await axios.get('https://api.github.com/search/users', {
-    params: { q },
-    headers: GITHUB_API_KEY ? { Authorization: `Bearer ${GITHUB_API_KEY}` } : {},
-  });
+  const response = await axios.get(`https://api.github.com/search/users?q=${encodeURIComponent(q)}`,
+    {
+      headers: GITHUB_API_KEY ? { Authorization: `Bearer ${GITHUB_API_KEY}` } : {},
+    }
+  );
   return response.data;
 };
 
