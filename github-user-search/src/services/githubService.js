@@ -11,9 +11,14 @@ export const fetchUserData = async (username) => {
   return response.data;
 };
 
-export const searchUsers = async (username) => {
-  const response = await axios.get(`${BASE_URL}/search/users`, {
-    params: { q: username },
+
+// Advanced search for users by username, location, and minRepos
+export const searchUsers = async (username, location = '', minRepos = '') => {
+  let q = username || '';
+  if (location) q += ` location:${location}`;
+  if (minRepos) q += ` repos:>${minRepos}`;
+  const response = await axios.get('https://api.github.com/search/users', {
+    params: { q },
     headers: GITHUB_API_KEY ? { Authorization: `Bearer ${GITHUB_API_KEY}` } : {},
   });
   return response.data;
