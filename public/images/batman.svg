@@ -1,0 +1,19 @@
+<!-- Sample movie posters that you can replace with your images -->
+<svg width="300" height="450" viewBox="0 0 300 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Batman Poster Style -->
+  <defs>
+    <linearGradient id="batmanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a4a4a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#batmanGrad)"/>
+  
+  <!-- Batman Symbol -->
+  <g transform="translate(150,225)">
+    <path d="M-40,-20 Q-60,-40 -80,-20 Q-70,0 -40,10 Q-20,20 0,15 Q20,20 40,10 Q70,0 80,-20 Q60,-40 40,-20 Q20,-30 0,-25 Q-20,-30 -40,-20 Z" fill="#FFD700"/>
+  </g>
+  
+  <!-- Movie Title -->
+  <text x="150" y="400" text-anchor="middle" fill="#FFD700" font-family="Arial, sans-serif" font-size="24" font-weight="bold">BATMAN</text>
+</svg>

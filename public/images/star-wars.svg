@@ -1,0 +1,24 @@
+<!-- Star Wars Poster Style -->
+<svg width="300" height="450" viewBox="0 0 300 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="spaceGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#000033;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#spaceGrad)"/>
+  
+  <!-- Stars -->
+  <circle cx="50" cy="80" r="1" fill="white"/>
+  <circle cx="250" cy="120" r="1" fill="white"/>
+  <circle cx="80" cy="200" r="1" fill="white"/>
+  <circle cx="220" cy="250" r="1" fill="white"/>
+  <circle cx="120" cy="350" r="1" fill="white"/>
+  
+  <!-- Lightsaber -->
+  <line x1="150" y1="150" x2="150" y2="300" stroke="#00FF00" stroke-width="8"/>
+  <line x1="150" y1="300" x2="150" y2="320" stroke="#CCCCCC" stroke-width="12"/>
+  
+  <!-- Title -->
+  <text x="150" y="400" text-anchor="middle" fill="#FFD700" font-family="Arial, sans-serif" font-size="20" font-weight="bold">STAR WARS</text>
+</svg>
