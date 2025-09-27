@@ -1,88 +1,46 @@
-# ALX Frontend React Projects# 🎬 Movie Database App
+# 🎬 Movie Database App
 
+A **professional, Netflix-inspired** movie search application built with React, TypeScript, and Vite. Search for movies, explore details, and discover your favorite films using the OMDB API with a sleek dark theme interface.
 
-
-This repository contains various React projects developed as part of the ALX Frontend curriculum.A **professional, Netflix-inspired** movie search application built with React, TypeScript, and Vite. Search for movies, explore details, and discover your favorite films using the OMDB API with a sleek dark theme interface.
-
-
-
-## Projects![Movie Database](https://img.shields.io/badge/React-18.0+-blue?style=flat-square&logo=react)
-
+![Movie Database](https://img.shields.io/badge/React-18.0+-blue?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?style=flat-square&logo=typescript)
-
-### Movie Data App![Vite](https://img.shields.io/badge/Vite-5.0+-purple?style=flat-square&logo=vite)
-
-A comprehensive movie database application built with React, TypeScript, and Vite.
+![Vite](https://img.shields.io/badge/Vite-5.0+-purple?style=flat-square&logo=vite)
 
 ## ✨ Features
 
-**Features:**
-
-- Search movies using OMDB API- 🔍 **Smart Movie Search**: Search for movies by title with real-time results
-
-- Professional Netflix-inspired dark theme- 🎨 **Professional Dark Theme**: Netflix-inspired clean and modern UI
-
-- Responsive design- 📱 **Fully Responsive**: Optimized for mobile, tablet, and desktop
-
-- TypeScript support- 🎭 **Movie Details**: Comprehensive movie information with ratings and cast
-
-- Modern React Router navigation- 🖼️ **Custom Image Support**: Use your own movie posters with smart fallbacks
-
+- 🔍 **Smart Movie Search**: Search for movies by title with real-time results
+- 🎨 **Professional Dark Theme**: Netflix-inspired clean and modern UI
+- 📱 **Fully Responsive**: Optimized for mobile, tablet, and desktop
+- 🎭 **Movie Details**: Comprehensive movie information with ratings and cast
+- 🖼️ **Custom Image Support**: Use your own movie posters with smart fallbacks
 - ⚡ **Lightning Fast**: Built with Vite for instant hot-reload development
+- � **Simple & Clean**: Professional interface focused on user experience
 
-**Location:** `./movie-data-app/`- � **Simple & Clean**: Professional interface focused on user experience
+## 🚀 Quick Start
 
+### Prerequisites
 
-
-**To run:**## 🚀 Quick Start
-
-```bash
-
-cd movie-data-app### Prerequisites
-
-npm install
-
-npm run dev- Node.js (version 16 or higher)
-
-```- npm or yarn package manager
-
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 - Free OMDB API key
 
-### Other Projects
+### 1. Get Your API Key
 
-- `alx-react-app/` - Basic React application### 1. Get Your API Key
+1. Visit [OMDB API](http://www.omdbapi.com/apikey.aspx)
+2. Sign up for a free API key
+3. Keep this key safe - you'll need it in step 3
 
-- `alx-react-app-props/` - React props and context examples
+### 2. Environment Setup
 
-- `github-user-search/` - GitHub user search application1. Visit [OMDB API](http://www.omdbapi.com/apikey.aspx)
-
-- `my-company/` - Company website example2. Sign up for a free API key
-
-- `recipe-sharing-app/` - Recipe sharing application3. Keep this key safe - you'll need it in step 3
-
-
-
-## Getting Started### 2. Environment Setup
-
-
-
-Each project has its own README file with specific setup instructions. Navigate to the project folder and follow the instructions there.```bash
-
+```bash
 # Copy the environment template
+cp .env.example .env
+```
 
-## Technologies Usedcp .env.example .env
+### 3. Add Your API Key
 
-- React 18+```
+Edit the `.env` file and add your OMDB API key:
 
-- TypeScript
-
-- Vite### 3. Add Your API Key
-
-- React Router
-
-- Modern CSSEdit the `.env` file and add your OMDB API key:
-
-- Various APIs integration
 ```env
 VITE_OMDB_API_KEY=your_actual_api_key_here
 ```
