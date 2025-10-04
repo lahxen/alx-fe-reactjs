@@ -1,0 +1,22 @@
+<!-- Marvel/Avengers Poster Style -->
+<svg width="300" height="450" viewBox="0 0 300 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="marvelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#000080;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#marvelGrad)"/>
+  
+  <!-- Captain America Shield -->
+  <g transform="translate(150,225)">
+    <circle cx="0" cy="0" r="50" fill="#FF0000"/>
+    <circle cx="0" cy="0" r="35" fill="white"/>
+    <circle cx="0" cy="0" r="20" fill="#FF0000"/>
+    <path d="M-15,-25 L0,-35 L15,-25 L25,0 L15,25 L0,35 L-15,25 L-25,0 Z" fill="white"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="150" y="400" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="22" font-weight="bold">AVENGERS</text>
+</svg>
