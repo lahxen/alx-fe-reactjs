@@ -3,48 +3,259 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "400g spaghetti pasta",
+      "200g pancetta or bacon, diced",
+      "3 large eggs",
+      "100g Pecorino Romano cheese, grated",
+      "2 cloves garlic, minced",
+      "Black pepper to taste",
+      "Salt to taste",
+      "2 tbsp olive oil"
+    ],
+    "instructions": [
+      "Bring a large pot of salted water to boil and cook spaghetti according to package instructions.",
+      "While pasta cooks, heat olive oil in a large pan over medium heat.",
+      "Add pancetta and cook until crispy, about 5-7 minutes.",
+      "In a bowl, whisk together eggs, grated cheese, and black pepper.",
+      "Drain pasta, reserving 1 cup of pasta water.",
+      "Add hot pasta to the pan with pancetta and toss.",
+      "Remove from heat and slowly add egg mixture, tossing quickly to coat.",
+      "Add pasta water as needed to create a creamy sauce.",
+      "Serve immediately with extra cheese and black pepper."
+    ],
+    "prepTime": "15 minutes",
+    "cookTime": "20 minutes",
+    "servings": 4
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "1 lb boneless chicken, cut into chunks",
+      "1 cup plain yogurt",
+      "2 tsp garam masala",
+      "1 tsp cumin powder",
+      "1 tsp coriander powder",
+      "1 can (14 oz) crushed tomatoes",
+      "1/2 cup heavy cream",
+      "1 large onion, diced",
+      "3 cloves garlic, minced",
+      "1 inch ginger, grated",
+      "2 tbsp vegetable oil",
+      "Salt to taste",
+      "Fresh cilantro for garnish"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt, half the garam masala, cumin, and salt for 30 minutes.",
+      "Heat oil in a large pan and cook marinated chicken until browned. Set aside.",
+      "In the same pan, sauté onions until golden brown.",
+      "Add garlic and ginger, cook for 1 minute.",
+      "Add remaining spices and cook for 30 seconds.",
+      "Add crushed tomatoes and simmer for 10 minutes.",
+      "Return chicken to pan and simmer for 15 minutes.",
+      "Stir in cream and simmer for 5 more minutes.",
+      "Garnish with cilantro and serve with rice or naan."
+    ],
+    "prepTime": "45 minutes",
+    "cookTime": "30 minutes",
+    "servings": 4
   },
   {
     "id": 3,
     "title": "Beef Tacos",
     "summary": "Delicious and flavorful beef tacos topped with fresh salsa, lettuce, and cheese.",
-    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "1 lb ground beef",
+      "8 taco shells or tortillas",
+      "1 onion, diced",
+      "2 cloves garlic, minced",
+      "1 packet taco seasoning",
+      "1/2 cup water",
+      "1 cup lettuce, shredded",
+      "1 cup cheddar cheese, shredded",
+      "2 tomatoes, diced",
+      "1/2 cup sour cream",
+      "1/4 cup fresh cilantro, chopped",
+      "Lime wedges for serving"
+    ],
+    "instructions": [
+      "Heat a large skillet over medium-high heat.",
+      "Add ground beef and cook, breaking it up, until browned.",
+      "Add onion and garlic, cook until softened.",
+      "Drain excess fat from the pan.",
+      "Add taco seasoning and water, simmer for 5 minutes.",
+      "Warm taco shells according to package instructions.",
+      "Fill each shell with beef mixture.",
+      "Top with lettuce, cheese, tomatoes, and sour cream.",
+      "Garnish with cilantro and serve with lime wedges."
+    ],
+    "prepTime": "15 minutes",
+    "cookTime": "15 minutes",
+    "servings": 4
   },
   {
     "id": 4,
     "title": "Caesar Salad",
     "summary": "Crisp romaine lettuce tossed with Caesar dressing, croutons, and parmesan cheese.",
-    "image": "https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "2 large romaine lettuce heads, chopped",
+      "1/2 cup mayonnaise",
+      "2 tbsp lemon juice",
+      "2 cloves garlic, minced",
+      "1 tsp Worcestershire sauce",
+      "1/2 cup Parmesan cheese, grated",
+      "2 cups croutons",
+      "2 tbsp olive oil",
+      "Salt and pepper to taste",
+      "4 anchovy fillets (optional)"
+    ],
+    "instructions": [
+      "Wash and dry romaine lettuce thoroughly, then chop into bite-sized pieces.",
+      "In a large bowl, whisk together mayonnaise, lemon juice, garlic, and Worcestershire sauce.",
+      "If using anchovies, mash them and add to the dressing.",
+      "Add half the Parmesan cheese to the dressing and mix well.",
+      "Add lettuce to the bowl and toss to coat with dressing.",
+      "Top with remaining Parmesan cheese and croutons.",
+      "Season with salt and pepper to taste.",
+      "Serve immediately for best texture."
+    ],
+    "prepTime": "15 minutes",
+    "cookTime": "0 minutes",
+    "servings": 4
   },
   {
     "id": 5,
     "title": "Chocolate Chip Cookies",
     "summary": "Classic homemade chocolate chip cookies that are crispy on the outside and chewy inside.",
-    "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "2 1/4 cups all-purpose flour",
+      "1 tsp baking soda",
+      "1 tsp salt",
+      "1 cup butter, softened",
+      "3/4 cup granulated sugar",
+      "3/4 cup brown sugar, packed",
+      "2 large eggs",
+      "2 tsp vanilla extract",
+      "2 cups chocolate chips"
+    ],
+    "instructions": [
+      "Preheat oven to 375°F (190°C).",
+      "In a bowl, whisk together flour, baking soda, and salt.",
+      "In a large bowl, cream butter with both sugars until light and fluffy.",
+      "Beat in eggs one at a time, then add vanilla.",
+      "Gradually mix in the flour mixture until just combined.",
+      "Fold in chocolate chips.",
+      "Drop rounded tablespoons of dough onto ungreased baking sheets.",
+      "Bake for 9-11 minutes until golden brown around edges.",
+      "Cool on baking sheet for 5 minutes before transferring to wire rack."
+    ],
+    "prepTime": "15 minutes",
+    "cookTime": "10 minutes",
+    "servings": 24
   },
   {
     "id": 6,
     "title": "Grilled Salmon",
     "summary": "Perfectly grilled salmon fillet with herbs and lemon, served with seasonal vegetables.",
-    "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "4 salmon fillets (6 oz each)",
+      "2 tbsp olive oil",
+      "2 lemons, sliced",
+      "2 tbsp fresh dill, chopped",
+      "2 tbsp fresh parsley, chopped",
+      "2 cloves garlic, minced",
+      "1 tsp salt",
+      "1/2 tsp black pepper",
+      "1 lb asparagus, trimmed",
+      "2 tbsp butter"
+    ],
+    "instructions": [
+      "Preheat grill to medium-high heat.",
+      "Pat salmon fillets dry and brush with olive oil.",
+      "Season with salt, pepper, and minced garlic.",
+      "Grill salmon for 4-5 minutes per side, depending on thickness.",
+      "In the last 2 minutes, add lemon slices to the grill.",
+      "Meanwhile, steam asparagus until tender-crisp, about 4-5 minutes.",
+      "Toss asparagus with butter, salt, and pepper.",
+      "Serve salmon topped with grilled lemon slices and fresh herbs.",
+      "Arrange asparagus alongside the salmon on plates."
+    ],
+    "prepTime": "10 minutes",
+    "cookTime": "15 minutes",
+    "servings": 4
   },
   {
     "id": 7,
     "title": "Vegetable Stir Fry",
     "summary": "A healthy mix of fresh vegetables stir-fried in a savory sauce with garlic and ginger.",
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "2 tbsp vegetable oil",
+      "1 bell pepper, sliced",
+      "1 cup broccoli florets",
+      "1 carrot, julienned",
+      "1 zucchini, sliced",
+      "1/2 cup snap peas",
+      "3 cloves garlic, minced",
+      "1 inch ginger, grated",
+      "3 tbsp soy sauce",
+      "1 tbsp sesame oil",
+      "1 tsp cornstarch",
+      "2 green onions, chopped",
+      "Sesame seeds for garnish"
+    ],
+    "instructions": [
+      "Heat vegetable oil in a large wok or skillet over high heat.",
+      "Add garlic and ginger, stir-fry for 30 seconds until fragrant.",
+      "Add harder vegetables first (broccoli, carrots) and cook for 2 minutes.",
+      "Add remaining vegetables and stir-fry for 3-4 minutes until tender-crisp.",
+      "In a small bowl, mix soy sauce, sesame oil, and cornstarch.",
+      "Pour sauce over vegetables and toss to coat.",
+      "Cook for 1 more minute until sauce thickens slightly.",
+      "Remove from heat and garnish with green onions and sesame seeds.",
+      "Serve immediately over rice or noodles."
+    ],
+    "prepTime": "15 minutes",
+    "cookTime": "10 minutes",
+    "servings": 4
   },
   {
     "id": 8,
     "title": "Margherita Pizza",
     "summary": "Traditional Italian pizza with fresh mozzarella, tomatoes, and basil on a crispy crust.",
-    "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+    "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+    "ingredients": [
+      "1 pizza dough (store-bought or homemade)",
+      "1/2 cup pizza sauce",
+      "8 oz fresh mozzarella, sliced",
+      "2 large tomatoes, sliced",
+      "1/4 cup fresh basil leaves",
+      "2 tbsp olive oil",
+      "1 clove garlic, minced",
+      "Salt and pepper to taste",
+      "Cornmeal for dusting"
+    ],
+    "instructions": [
+      "Preheat oven to 475°F (245°C). If using a pizza stone, place it in the oven.",
+      "Roll out pizza dough on a floured surface to desired thickness.",
+      "Transfer to a pizza pan dusted with cornmeal.",
+      "Brush dough with olive oil and minced garlic.",
+      "Spread pizza sauce evenly, leaving a 1-inch border for crust.",
+      "Arrange mozzarella slices and tomato slices on top.",
+      "Season with salt and pepper.",
+      "Bake for 12-15 minutes until crust is golden and cheese is bubbly.",
+      "Remove from oven and top with fresh basil leaves before serving."
+    ],
+    "prepTime": "20 minutes",
+    "cookTime": "15 minutes",
+    "servings": 2
   }
 ]

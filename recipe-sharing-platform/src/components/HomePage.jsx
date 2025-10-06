@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import data from '../data.json';
 
 const HomePage = () => {
@@ -40,29 +41,36 @@ const HomePage = () => {
         {/* Recipe Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {recipes.map((recipe) => (
-            <div key={recipe.id} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <div key={recipe.id} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
               {/* Recipe Image */}
-              <div className="h-48 bg-gray-200">
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Link to={`/recipe/${recipe.id}`} className="block">
+                <div className="h-48 bg-gray-200 overflow-hidden">
+                  <img
+                    src={recipe.image}
+                    alt={recipe.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </Link>
               
               {/* Recipe Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {recipe.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <Link to={`/recipe/${recipe.id}`}>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+                    {recipe.title}
+                  </h3>
+                </Link>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                   {recipe.summary}
                 </p>
                 
                 {/* View Recipe Button */}
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                <Link
+                  to={`/recipe/${recipe.id}`}
+                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 font-medium"
+                >
                   View Recipe
-                </button>
+                </Link>
               </div>
             </div>
           ))}
