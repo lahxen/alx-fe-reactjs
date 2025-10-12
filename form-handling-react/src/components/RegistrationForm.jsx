@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  // State to manage form data
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  // Controlled components - individual state variables
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // State to manage validation errors
   const [errors, setErrors] = useState({});
 
   // Handle input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
     // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: ''
-      });
+    if (errors.username) {
+      setErrors({ ...errors, username: '' });
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    // Clear error when user starts typing
+    if (errors.email) {
+      setErrors({ ...errors, email: '' });
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    // Clear error when user starts typing
+    if (errors.password) {
+      setErrors({ ...errors, password: '' });
     }
   };
 
@@ -32,19 +38,19 @@ const RegistrationForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.username.trim()) {
+    if (!username.trim()) {
       newErrors.username = 'Username is required';
     }
 
-    if (!formData.email.trim()) {
+    if (!email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = 'Email is invalid';
     }
 
-    if (!formData.password.trim()) {
+    if (!password.trim()) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
+    } else if (password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
     }
 
@@ -62,6 +68,9 @@ const RegistrationForm = () => {
     }
 
     try {
+      // Create form data object
+      const formData = { username, email, password };
+      
       // Mock API call - replace with actual API endpoint
       console.log('Submitting user data:', formData);
       
@@ -80,11 +89,9 @@ const RegistrationForm = () => {
         console.log('Registration result:', result);
         
         // Reset form
-        setFormData({
-          username: '',
-          email: '',
-          password: ''
-        });
+        setUsername('');
+        setEmail('');
+        setPassword('');
         setErrors({});
       } else {
         alert('Registration failed. Please try again.');
@@ -105,8 +112,8 @@ const RegistrationForm = () => {
             type="text"
             id="username"
             name="username"
-            value={formData.username}
-            onChange={handleInputChange}
+            value={username}
+            onChange={handleUsernameChange}
             className={errors.username ? 'error' : ''}
           />
           {errors.username && <span className="error-message">{errors.username}</span>}
@@ -118,8 +125,8 @@ const RegistrationForm = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+            value={email}
+            onChange={handleEmailChange}
             className={errors.email ? 'error' : ''}
           />
           {errors.email && <span className="error-message">{errors.email}</span>}
@@ -131,8 +138,8 @@ const RegistrationForm = () => {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
-            onChange={handleInputChange}
+            value={password}
+            onChange={handlePasswordChange}
             className={errors.password ? 'error' : ''}
           />
           {errors.password && <span className="error-message">{errors.password}</span>}
