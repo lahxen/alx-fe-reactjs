@@ -1,67 +1,68 @@
-import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import data from '../data.json';
+
+// Fetch function for individual recipe
+const fetchRecipe = async (id) => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  
+  if (!response.ok) {
+    throw new Error('Recipe not found in API');
+  }
+  
+  const post = await response.json();
+  
+  // Transform API post into recipe format
+  const transformedRecipe = {
+    id: post.id,
+    title: post.title.charAt(0).toUpperCase() + post.title.slice(1),
+    summary: post.body.substring(0, 100) + '...',
+    image: `https://images.unsplash.com/photo-${1550000000000 + post.id}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`,
+    ingredients: [
+      'Fresh ingredients',
+      'Quality spices',
+      'Cooking oil',
+      'Salt and pepper to taste',
+      'Additional seasonings',
+      'Fresh herbs'
+    ],
+    instructions: [
+      'Prepare all ingredients and workspace',
+      'Follow the cooking process carefully',
+      'Season to taste during cooking',
+      'Allow proper cooking time',
+      'Check for doneness',
+      'Serve hot and enjoy'
+    ],
+    prepTime: '15 minutes',
+    cookTime: '30 minutes',
+    servings: 4
+  };
+  
+  return transformedRecipe;
+};
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState(null);
-  const [loading, setLoading] = useState(true);
+  
+  // Use React Query to fetch individual recipe
+  const { 
+    data: recipe, 
+    isLoading: loading, 
+    isError 
+  } = useQuery({
+    queryKey: ['recipe', id],
+    queryFn: () => fetchRecipe(id),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    onError: (error) => {
+      console.log('API fetch failed, trying local data:', error);
+    },
+  });
 
-  useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        setLoading(true);
-        
-        // Try to fetch from API first
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-        
-        if (response.ok) {
-          const post = await response.json();
-          
-          // Transform API post into recipe format
-          const transformedRecipe = {
-            id: post.id,
-            title: post.title.charAt(0).toUpperCase() + post.title.slice(1),
-            summary: post.body.substring(0, 100) + '...',
-            image: `https://images.unsplash.com/photo-${1550000000000 + post.id}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`,
-            ingredients: [
-              'Fresh ingredients',
-              'Quality spices',
-              'Cooking oil',
-              'Salt and pepper to taste',
-              'Additional seasonings',
-              'Fresh herbs'
-            ],
-            instructions: [
-              'Prepare all ingredients and workspace',
-              'Follow the cooking process carefully',
-              'Season to taste during cooking',
-              'Allow proper cooking time',
-              'Check for doneness',
-              'Serve hot and enjoy'
-            ],
-            prepTime: '15 minutes',
-            cookTime: '30 minutes',
-            servings: 4
-          };
-          
-          setRecipe(transformedRecipe);
-        } else {
-          throw new Error('Recipe not found in API');
-        }
-      } catch (error) {
-        console.log('API fetch failed, trying local data:', error);
-        
-        // Fallback to local data
-        const foundRecipe = data.find(recipe => recipe.id === parseInt(id));
-        setRecipe(foundRecipe);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRecipe();
-  }, [id]);
+  // Use local data as fallback if there's an error
+  const displayRecipe = isError 
+    ? data.find(recipe => recipe.id === parseInt(id))
+    : recipe;
 
   if (loading) {
     return (
@@ -96,7 +97,7 @@ const RecipeDetail = () => {
     );
   }
 
-  if (!recipe) {
+  if (!displayRecipe && !loading) {
     return (
       <div className="min-h-screen bg-gray-50 pt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -136,8 +137,8 @@ const RecipeDetail = () => {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
           <div className="h-64 md:h-80 bg-gray-200">
             <img
-              src={recipe.image}
-              alt={recipe.title}
+              src={displayRecipe.image}
+              alt={displayRecipe.title}
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
@@ -147,30 +148,30 @@ const RecipeDetail = () => {
           
           <div className="p-6 md:p-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {recipe.title}
+              {displayRecipe.title}
             </h1>
             
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              {recipe.summary}
+              {displayRecipe.summary}
             </p>
 
             {/* Recipe Info */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">{recipe.prepTime}</div>
+                <div className="text-2xl font-bold text-blue-600">{displayRecipe.prepTime}</div>
                 <div className="text-sm text-gray-600">Prep Time</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">{recipe.cookTime}</div>
+                <div className="text-2xl font-bold text-green-600">{displayRecipe.cookTime}</div>
                 <div className="text-sm text-gray-600">Cook Time</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600">{recipe.servings}</div>
+                <div className="text-2xl font-bold text-purple-600">{displayRecipe.servings}</div>
                 <div className="text-sm text-gray-600">Servings</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-orange-600">
-                  {parseInt(recipe.prepTime) + parseInt(recipe.cookTime)} min
+                  {parseInt(displayRecipe.prepTime) + parseInt(displayRecipe.cookTime)} min
                 </div>
                 <div className="text-sm text-gray-600">Total Time</div>
               </div>
@@ -189,7 +190,7 @@ const RecipeDetail = () => {
               Ingredients
             </h2>
             <ul className="space-y-3">
-              {recipe.ingredients.map((ingredient, index) => (
+              {displayRecipe.ingredients.map((ingredient, index) => (
                 <li
                   key={index}
                   className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-200"
@@ -212,7 +213,7 @@ const RecipeDetail = () => {
               Instructions
             </h2>
             <ol className="space-y-4">
-              {recipe.instructions.map((instruction, index) => (
+              {displayRecipe.instructions.map((instruction, index) => (
                 <li
                   key={index}
                   className="flex p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-200"
@@ -258,7 +259,7 @@ const RecipeDetail = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-6">More Recipes You Might Like</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {data
-              .filter(r => r.id !== recipe.id)
+              .filter(r => r.id !== displayRecipe.id)
               .slice(0, 3)
               .map((relatedRecipe) => (
                 <Link
