@@ -4,10 +4,59 @@ import data from '../data.json';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Load recipe data from data.json file into state when component mounts
-    setRecipes(data);
+    // Fetch posts from JSONPlaceholder API and transform them into recipe format
+    const fetchRecipes = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const posts = await response.json();
+        
+        // Transform posts into recipe format and limit to first 8 posts
+        const transformedRecipes = posts.slice(0, 8).map((post, index) => ({
+          id: post.id,
+          title: post.title.charAt(0).toUpperCase() + post.title.slice(1), // Capitalize first letter
+          summary: post.body.substring(0, 100) + '...', // Use body as summary, truncated
+          image: `https://images.unsplash.com/photo-${1550000000000 + index}?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80`,
+          // Add some default recipe data
+          ingredients: [
+            'Fresh ingredients',
+            'Quality spices',
+            'Cooking oil',
+            'Salt and pepper to taste'
+          ],
+          instructions: [
+            'Prepare all ingredients',
+            'Follow the cooking process',
+            'Season to taste',
+            'Serve hot and enjoy'
+          ],
+          prepTime: '15 minutes',
+          cookTime: '30 minutes',
+          servings: 4
+        }));
+        
+        setRecipes(transformedRecipes);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching recipes:', err);
+        setError('Failed to load recipes from API. Loading local data instead.');
+        // Fallback to local data if API fails
+        setRecipes(data.slice(0, 8));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecipes();
   }, []);
 
   return (
@@ -64,9 +113,37 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Recipe Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {recipes.map((recipe) => (
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-lg">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              <span>{error}</span>
+            </div>
+          </div>
+        )}
+
+        {/* Loading State */}
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden animate-pulse">
+                <div className="h-48 bg-gray-200"></div>
+                <div className="p-6">
+                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-2/3 mb-4"></div>
+                  <div className="h-8 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* Recipe Grid */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {recipes.map((recipe) => (
             <div key={recipe.id} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
               {/* Recipe Image */}
               <Link to={`/recipe/${recipe.id}`} className="block">
@@ -100,7 +177,8 @@ const HomePage = () => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

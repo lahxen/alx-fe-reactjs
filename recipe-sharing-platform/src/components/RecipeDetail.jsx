@@ -8,14 +8,59 @@ const RecipeDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time and fetch recipe by ID
-    const timer = setTimeout(() => {
-      const foundRecipe = data.find(recipe => recipe.id === parseInt(id));
-      setRecipe(foundRecipe);
-      setLoading(false);
-    }, 500);
+    const fetchRecipe = async () => {
+      try {
+        setLoading(true);
+        
+        // Try to fetch from API first
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+        
+        if (response.ok) {
+          const post = await response.json();
+          
+          // Transform API post into recipe format
+          const transformedRecipe = {
+            id: post.id,
+            title: post.title.charAt(0).toUpperCase() + post.title.slice(1),
+            summary: post.body.substring(0, 100) + '...',
+            image: `https://images.unsplash.com/photo-${1550000000000 + post.id}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`,
+            ingredients: [
+              'Fresh ingredients',
+              'Quality spices',
+              'Cooking oil',
+              'Salt and pepper to taste',
+              'Additional seasonings',
+              'Fresh herbs'
+            ],
+            instructions: [
+              'Prepare all ingredients and workspace',
+              'Follow the cooking process carefully',
+              'Season to taste during cooking',
+              'Allow proper cooking time',
+              'Check for doneness',
+              'Serve hot and enjoy'
+            ],
+            prepTime: '15 minutes',
+            cookTime: '30 minutes',
+            servings: 4
+          };
+          
+          setRecipe(transformedRecipe);
+        } else {
+          throw new Error('Recipe not found in API');
+        }
+      } catch (error) {
+        console.log('API fetch failed, trying local data:', error);
+        
+        // Fallback to local data
+        const foundRecipe = data.find(recipe => recipe.id === parseInt(id));
+        setRecipe(foundRecipe);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return () => clearTimeout(timer);
+    fetchRecipe();
   }, [id]);
 
   if (loading) {
