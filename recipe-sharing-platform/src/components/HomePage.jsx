@@ -78,9 +78,15 @@ const HomePage = () => {
               </svg>
               Add Your Recipe
             </Link>
-            <button className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-400 transition duration-300">
-              Explore Recipes
-            </button>
+            <Link
+              to="/posts"
+              className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-500 transition duration-300 inline-flex items-center justify-center"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              React Query Demo
+            </Link>
           </div>
         </div>
       </div>

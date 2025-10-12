@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import HomePage from './components/HomePage';
 import RecipeDetail from './components/RecipeDetail';
 import AddRecipeForm from './components/AddRecipeForm';
+import PostsComponent from './components/PostsComponent';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -37,8 +38,8 @@ function App() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                      Recipes
+                    <Link to="/posts" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                      Posts Demo
                     </Link>
                   </li>
                   <li>
@@ -57,6 +58,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             <Route path="/add-recipe" element={<AddRecipeForm />} />
+            <Route path="/posts" element={<PostsComponent />} />
           </Routes>
         </main>
       </div>
