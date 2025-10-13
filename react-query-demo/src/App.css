@@ -217,6 +217,13 @@
   text-align: center;
 }
 
+.error-status {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
 .retry-btn {
   background: #dc3545;
   color: white;

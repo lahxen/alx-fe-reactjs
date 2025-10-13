@@ -28,6 +28,7 @@ function PostsComponent() {
     data: posts,
     isLoading,
     error,
+    isError,
     refetch,
     isFetching,
     dataUpdatedAt,
@@ -43,6 +44,7 @@ function PostsComponent() {
     data: selectedPost,
     isLoading: isLoadingPost,
     error: postError,
+    isError: isPostError,
   } = useQuery({
     queryKey: ['post', selectedPostId],
     queryFn: () => fetchPostById(selectedPostId),
@@ -63,11 +65,12 @@ function PostsComponent() {
     setShowDetails(false)
   }
 
-  if (error) {
+  if (isError || error) {
     return (
       <div className="error-container">
         <h2>Error Loading Posts</h2>
-        <p>{error.message}</p>
+        <p>{error?.message || 'An error occurred while loading posts'}</p>
+        <p className="error-status">Error Status: {isError ? 'True' : 'False'}</p>
         <button onClick={handleRefetch} className="retry-btn">
           Retry
         </button>
@@ -86,9 +89,10 @@ function PostsComponent() {
         
         {isLoadingPost ? (
           <div className="loading">Loading post details...</div>
-        ) : postError ? (
+        ) : isPostError || postError ? (
           <div className="error">
-            <p>Error loading post: {postError.message}</p>
+            <p>Error loading post: {postError?.message || 'An error occurred'}</p>
+            <p className="error-status">Post Error Status: {isPostError ? 'True' : 'False'}</p>
           </div>
         ) : selectedPost ? (
           <div className="post-details">
