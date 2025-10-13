@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddTodoForm from './AddTodoForm';
 
-const TodoList = () => {
+function TodoList() {
   // Initial todos for demonstration
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React', completed: false },
@@ -62,6 +62,6 @@ const TodoList = () => {
       </div>
     </div>
   );
-};
+}
 
 export default TodoList;
