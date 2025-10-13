@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AddTodoForm from './AddTodoForm';
 
 const TodoList = () => {
   // Initialize the component state with a few todos for demonstration
@@ -32,28 +33,12 @@ const TodoList = () => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const input = e.target.querySelector('input');
-    addTodo(input.value);
-    input.value = '';
-  };
-
   return (
     <div>
       <h1>Todo List</h1>
       
       {/* Add Todo Form */}
-      <form onSubmit={handleSubmit} data-testid="add-todo-form">
-        <input
-          type="text"
-          placeholder="Add a new todo..."
-          data-testid="add-todo-input"
-        />
-        <button type="submit" data-testid="add-todo-button">
-          Add Todo
-        </button>
-      </form>
+      <AddTodoForm onAddTodo={addTodo} />
 
       {/* Todo List */}
       <div data-testid="todo-list">
