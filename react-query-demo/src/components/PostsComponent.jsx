@@ -32,11 +32,14 @@ function PostsComponent() {
     refetch,
     isFetching,
     dataUpdatedAt,
+    isPreviousData,
   } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
     staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
     cacheTime: 10 * 60 * 1000, // Keep data in cache for 10 minutes
+    refetchOnWindowFocus: true, // Refetch when window gains focus
+    keepPreviousData: true, // Keep previous data while fetching new data
   })
 
   // Query to fetch specific post details
@@ -49,6 +52,8 @@ function PostsComponent() {
     queryKey: ['post', selectedPostId],
     queryFn: () => fetchPostById(selectedPostId),
     enabled: !!selectedPostId, // Only run when selectedPostId is truthy
+    refetchOnWindowFocus: false, // Don't refetch post details on focus
+    keepPreviousData: true, // Keep previous post data while loading new one
   })
 
   const handleRefetch = () => {
@@ -124,6 +129,16 @@ function PostsComponent() {
             Last updated: {new Date(dataUpdatedAt).toLocaleTimeString()}
           </p>
         )}
+        {isPreviousData && (
+          <p className="previous-data-indicator">
+            📚 Showing previous data while fetching updates...
+          </p>
+        )}
+        {isFetching && !isLoading && (
+          <p className="background-fetch-indicator">
+            🔄 Fetching fresh data in background...
+          </p>
+        )}
       </div>
 
       {isLoading ? (
@@ -156,15 +171,23 @@ function PostsComponent() {
       )}
 
       <div className="cache-info">
-        <h3>React Query Features Demonstrated:</h3>
+        <h3>React Query Caching Features Demonstrated:</h3>
         <ul>
-          <li>✅ Automatic caching - Navigate away and back to see cached data</li>
-          <li>✅ Background refetching - Data updates automatically when stale</li>
-          <li>✅ Loading states - See spinners during data fetching</li>
-          <li>✅ Error handling - Network errors are gracefully handled</li>
-          <li>✅ Manual refetch - Use the refresh button to update data</li>
-          <li>✅ Dependent queries - Post details only load when selected</li>
+          <li>✅ <strong>Automatic caching</strong> - Navigate away and back to see cached data</li>
+          <li>✅ <strong>Background refetching</strong> - Data updates automatically when stale</li>
+          <li>✅ <strong>refetchOnWindowFocus</strong> - Posts refetch when window gains focus</li>
+          <li>✅ <strong>keepPreviousData</strong> - Previous data shown while fetching new data</li>
+          <li>✅ <strong>Loading states</strong> - See spinners during data fetching</li>
+          <li>✅ <strong>Error handling</strong> - Network errors are gracefully handled with isError</li>
+          <li>✅ <strong>Manual refetch</strong> - Use the refresh button to update data</li>
+          <li>✅ <strong>Dependent queries</strong> - Post details only load when selected</li>
         </ul>
+        
+        <div className="caching-demo-tips">
+          <h4>🔬 Try These Caching Demos:</h4>
+          <p><strong>refetchOnWindowFocus:</strong> Switch to another tab/window and back to see automatic refetch</p>
+          <p><strong>keepPreviousData:</strong> Click different post details to see previous data persist during loading</p>
+        </div>
       </div>
     </div>
   )

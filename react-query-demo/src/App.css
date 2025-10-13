@@ -69,6 +69,33 @@
   margin: 0;
 }
 
+.previous-data-indicator {
+  color: #856404;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  animation: pulse 2s infinite;
+}
+
+.background-fetch-indicator {
+  color: #004085;
+  background: #cce5ff;
+  border: 1px solid #b3d9ff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
 /* Loading Styles */
 .loading {
   display: flex;
@@ -261,6 +288,30 @@
 
 .cache-info li {
   margin-bottom: 0.5rem;
+}
+
+.caching-demo-tips {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+}
+
+.caching-demo-tips h4 {
+  color: #007bff;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.caching-demo-tips p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.caching-demo-tips strong {
+  color: #007bff;
 }
 
 /* Navigation Styles */
