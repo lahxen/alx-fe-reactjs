@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import Navigation from './components/Navigation'
+import PostsComponent from './components/PostsComponent'
 import './App.css'
 
 // Create a client
@@ -22,7 +22,7 @@ function App() {
           <p>Advanced Data Handling with React Query</p>
         </header>
         <main>
-          <Navigation />
+          <PostsComponent />
         </main>
       </div>
       <ReactQueryDevtools initialIsOpen={false} />
