@@ -1,0 +1,57 @@
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.main-content {
+  padding: 0 1rem;
+}
+
+/* Link Styles */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button Styles */
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Form Styles */
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0 0.5rem;
+  }
+  
+  nav div {
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+  }
+}
